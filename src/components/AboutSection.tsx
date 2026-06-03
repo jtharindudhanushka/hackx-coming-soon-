@@ -33,6 +33,19 @@ export function AboutSection() {
     <section className="relative w-full py-24 md:py-32 px-4 md:px-8 bg-[#010E13]">
       <div className="max-w-6xl mx-auto flex flex-col gap-12 lg:gap-16">
 
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center w-full"
+        >
+          <h2 className="font-display text-3xl md:text-5xl text-white tracking-wider uppercase drop-shadow-[0_0_15px_rgba(114,229,248,0.1)]">
+            {strings.aboutTitle}
+          </h2>
+        </motion.div>
+
         {/* Top Part: Text & Video */}
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
 
@@ -45,9 +58,6 @@ export function AboutSection() {
               transition={{ duration: 0.8 }}
               className="text-center lg:text-left"
             >
-              <h2 className="font-display text-3xl md:text-5xl text-white mb-6 tracking-wider uppercase">
-                {strings.aboutTitle}
-              </h2>
               <p className="font-body text-lg text-gray-400 leading-relaxed">
                 {strings.aboutDesc}
               </p>
