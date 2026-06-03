@@ -7,18 +7,7 @@ import Image from "next/image";
 // Feature flag to control visibility of AI generated/placeholder timeline photos
 const SHOW_TIMELINE_IMAGES = false;
 
-const cardVariants = {
-  hidden: { opacity: 0, x: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      delay: i * 0.15,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  }),
-};
+
 
 export function TimelineSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -129,11 +118,10 @@ export function TimelineSection() {
 
                 {/* Content Card */}
                 <motion.div
-                  custom={index}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
                   className="pl-12 md:pl-0 flex-1"
                 >
                   <div className="p-6 md:p-8 bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-2xl shadow-2xl hover:bg-white/[0.06] hover:border-bioluminance/30 hover:shadow-[0_0_30px_rgba(114,229,248,0.1)] transition-all duration-300 transform hover:-translate-y-1">
