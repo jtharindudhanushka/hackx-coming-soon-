@@ -11,23 +11,15 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-[#010E13] relative z-10 flex flex-col">
-      <div className="w-full border-t border-white/5 py-10 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 lg:gap-16">
+      <div className="w-full border-t border-white/5 py-8 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-8 items-center lg:items-start">
           
           {/* Left Side: Organizers */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">
-            <div className="relative w-48 h-16 md:w-56 md:h-20 mb-6">
-              <Image
-                src="/hackxlogo.webp"
-                alt="hackX Jr 2026 Logo"
-                fill
-                className="object-contain object-center lg:object-left"
-              />
-            </div>
-            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-6 max-w-lg font-light tracking-wide">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:max-w-md pt-2">
+            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-6 font-light tracking-wide">
               {strings.organizersText}
             </p>
-            <div className="relative w-[380px] h-28 md:w-[480px] md:h-36">
+            <div className="relative w-[320px] h-24 md:w-[400px] md:h-32">
               <Image
                 src="/organizerslogo.webp"
                 alt="Organizers: IMSSA, Ministry of Science and Technology, NSF"
@@ -37,10 +29,22 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Center: hackX Logo */}
+          <div className="flex flex-col items-center justify-center w-full lg:px-4 lg:pt-6">
+            <div className="relative w-56 h-20 md:w-64 md:h-24">
+              <Image
+                src="/hackxlogo.webp"
+                alt="hackX Jr 2026 Logo"
+                fill
+                className="object-contain object-center"
+              />
+            </div>
+          </div>
+
           {/* Right Side: Connect */}
-          <div className="flex flex-col items-center lg:items-end flex-1 pt-4 relative z-10 w-full">
+          <div className="flex flex-col items-center lg:items-end w-full relative z-10 pt-2">
             <div className="flex flex-col items-center w-full max-w-[320px]">
-              <h3 className="font-display text-xl lg:text-2xl text-white tracking-widest mb-8 uppercase bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 text-center w-full">
+              <h3 className="font-display text-xl lg:text-2xl text-white tracking-widest mb-6 uppercase bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 text-center w-full">
                 Get in Touch
               </h3>
 
