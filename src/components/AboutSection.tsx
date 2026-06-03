@@ -78,33 +78,31 @@ export function AboutSection() {
             </motion.div>
           </div>
 
-          {/* Right Side: Video */}
-          <div className="flex-1 w-full flex flex-col justify-center mt-8 lg:mt-0 relative group">
-            {/* Ambient glow behind the video */}
-            <div className="absolute -inset-4 bg-bioluminance/20 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-            
+          {/* Right Side: Video wrapped in Glass Card */}
+          <div className="flex-1 w-full flex flex-col justify-center mt-8 lg:mt-0 relative z-10">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="w-full relative aspect-video rounded-3xl overflow-hidden border border-white/10 cursor-pointer shadow-[0_0_40px_rgba(0,0,0,0.8)] transform group-hover:scale-[1.02] transition-transform duration-500 bg-black"
+              className="w-full relative p-3 sm:p-5 md:p-6 rounded-[2rem] bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] cursor-pointer group/card overflow-hidden"
               onClick={() => setIsVideoOpen(true)}
             >
-              {/* Glass reflection highlight on the top edge */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent z-20" />
+              {/* Subtle IM logo color gradient in the card background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4ab2a6]/10 via-transparent to-transparent pointer-events-none" />
               
-              <iframe
-                src="https://player.vimeo.com/video/1198058883?autoplay=1&muted=1&background=1"
-                className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                allow="autoplay; fullscreen"
-              />
-              
-              <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-black/10 to-black/60 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-                <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center">
-                  <div className="absolute inset-0 bg-bioluminance/30 rounded-full blur-md group-hover:bg-bioluminance/50 transition-colors duration-500 animate-pulse" />
-                  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-bioluminance/90 backdrop-blur-md border border-white/20 flex items-center justify-center text-[#010E13] scale-90 group-hover:scale-105 transition-transform duration-500 shadow-[0_0_30px_rgba(114,229,248,0.5)]">
-                    <Play className="w-8 h-8 md:w-10 md:h-10 ml-1 md:ml-2 fill-current" />
+              {/* Video Container */}
+              <div className="w-full relative aspect-video rounded-[1.25rem] overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] transform group-hover/card:scale-[1.02] transition-transform duration-500 bg-black/50 border border-white/10">
+                <iframe
+                  src="https://player.vimeo.com/video/1198058883?autoplay=1&muted=1&background=1"
+                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                  allow="autoplay; fullscreen"
+                />
+                
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 z-10 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500 flex items-center justify-center">
+                  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white scale-95 group-hover/card:scale-100 group-hover/card:bg-[#4ab2a6] group-hover/card:text-[#010E13] group-hover/card:border-transparent transition-all duration-500">
+                    <Play className="w-8 h-8 md:w-10 md:h-10 fill-current translate-x-[2px]" />
                   </div>
                 </div>
               </div>
