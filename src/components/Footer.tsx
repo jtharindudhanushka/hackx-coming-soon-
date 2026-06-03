@@ -12,14 +12,14 @@ export function Footer() {
   return (
     <footer className="w-full bg-[#010E13] relative z-10 flex flex-col">
       <div className="w-full border-t border-white/5 py-8 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-8 items-center lg:items-start">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-8 items-center lg:items-stretch">
           
           {/* Left Side: Organizers */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:max-w-md pt-2">
-            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-6 font-light tracking-wide">
+            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-4 lg:mb-6 font-light tracking-wide">
               {strings.organizersText}
             </p>
-            <div className="relative w-[320px] h-24 md:w-[400px] md:h-32">
+            <div className="relative w-[280px] h-14 md:w-[360px] md:h-16 lg:w-[420px] lg:h-20">
               <Image
                 src="/organizerslogo.webp"
                 alt="Organizers: IMSSA, Ministry of Science and Technology, NSF"
@@ -30,8 +30,8 @@ export function Footer() {
           </div>
 
           {/* Center: hackX Logo */}
-          <div className="flex flex-col items-center justify-center w-full lg:px-4 lg:pt-6">
-            <div className="relative w-56 h-20 md:w-64 md:h-24">
+          <div className="flex flex-col items-center justify-center w-full lg:px-6 self-center">
+            <div className="relative w-64 h-24 md:w-80 md:h-28 lg:w-[340px] lg:h-[120px]">
               <Image
                 src="/hackxlogo.webp"
                 alt="hackX Jr 2026 Logo"
