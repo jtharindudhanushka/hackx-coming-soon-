@@ -1,13 +1,56 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Compass, Users, TrendingUp, Play, X } from "lucide-react";
+import { Compass, Users, TrendingUp, Volume2, VolumeX, Maximize2, Minimize2, X } from "lucide-react";
+import Player from "@vimeo/player";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function AboutSection() {
   const { strings } = useLanguage();
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<Player | null>(null);
+
+  useEffect(() => {
+    if (iframeRef.current && !playerRef.current) {
+      playerRef.current = new Player(iframeRef.current);
+      
+      // Hide the video until it actually starts playing to prevent white flashes or loading thumbnails
+      playerRef.current.on('play', () => {
+        setIsVideoLoaded(true);
+      });
+    }
+  }, []);
+
+  const toggleMute = () => {
+    if (playerRef.current) {
+      if (isMuted) {
+        playerRef.current.setVolume(1);
+        setIsMuted(false);
+      } else {
+        playerRef.current.setVolume(0);
+        setIsMuted(true);
+      }
+    }
+  };
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
+  const closeFullscreen = () => {
+    setIsFullscreen(false);
+    // When the modal closes, resume playing the background video
+    if (playerRef.current) {
+      setTimeout(() => {
+        playerRef.current?.play().catch((err) => console.log("Auto-resume failed:", err));
+      }, 500); // Wait for modal animation to finish unmounting the other iframe
+    }
+  };
 
   if (!strings) return null;
 
@@ -88,25 +131,44 @@ export function AboutSection() {
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full relative p-3 sm:p-5 md:p-6 rounded-[2rem] bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] cursor-pointer group/card overflow-hidden"
-              onClick={() => setIsVideoOpen(true)}
+              className="w-full relative p-3 sm:p-5 md:p-6 rounded-[2rem] bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] group/card overflow-hidden"
             >
               {/* Subtle IM logo color gradient in the card background */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#4ab2a6]/10 via-transparent to-transparent pointer-events-none" />
               
-              {/* Video Container */}
-              <div className="w-full relative aspect-video rounded-[1.25rem] overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] transform group-hover/card:scale-[1.02] transition-transform duration-500 bg-black/50 border border-white/10">
+              {/* Video Container (Thumbnail) */}
+              <div className="w-full relative aspect-video rounded-[1.25rem] overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] bg-black/50 border border-white/10 group-hover/card:scale-[1.02] transform transition-all duration-500 group/video">
                 <iframe
-                  src="https://player.vimeo.com/video/1198058883?autoplay=1&muted=1&background=1"
-                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                  allow="autoplay; fullscreen"
+                  ref={iframeRef}
+                  src="https://player.vimeo.com/video/1198058883?autoplay=1&muted=1&background=1&transparent=0"
+                  className={`absolute inset-0 w-full h-full border-0 z-0 pointer-events-none transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
                 />
                 
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 z-10 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500 flex items-center justify-center">
-                  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white scale-95 group-hover/card:scale-100 group-hover/card:bg-[#4ab2a6] group-hover/card:text-[#010E13] group-hover/card:border-transparent transition-all duration-500">
-                    <Play className="w-8 h-8 md:w-10 md:h-10 fill-current translate-x-[2px]" />
+                {/* Fallback loading skeleton/background while video buffers */}
+                {!isVideoLoaded && (
+                  <div className="absolute inset-0 z-0 bg-[#010E13] flex items-center justify-center">
+                    <div className="w-8 h-8 md:w-10 md:h-10 border-4 border-bioluminance/20 border-t-bioluminance rounded-full animate-spin" />
                   </div>
+                )}
+                
+                {/* Glass UI Controls Overlay */}
+                <div className="absolute bottom-4 right-4 z-20 flex items-center gap-3 opacity-0 group-hover/video:opacity-100 transition-opacity duration-300">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); toggleMute(); }}
+                    className="p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-[#4ab2a6] hover:text-[#010E13] hover:border-transparent hover:scale-110 transition-all shadow-lg"
+                    title={isMuted ? "Unmute" : "Mute"}
+                  >
+                    {isMuted ? <VolumeX className="w-4 h-4 md:w-5 md:h-5" /> : <Volume2 className="w-4 h-4 md:w-5 md:h-5" />}
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setIsFullscreen(true); }}
+                    className="p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-[#4ab2a6] hover:text-[#010E13] hover:border-transparent hover:scale-110 transition-all shadow-lg"
+                    title="Maximize to Popup"
+                  >
+                    <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -187,34 +249,32 @@ export function AboutSection() {
 
       </div>
 
-      {/* Video Modal */}
+      {/* Fullscreen Video Modal */}
       <AnimatePresence>
-        {isVideoOpen && (
+        {isFullscreen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-[#010E13]/90 backdrop-blur-md"
-            onClick={() => setIsVideoOpen(false)}
+            onClick={closeFullscreen}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 30 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.5)] border border-white/10"
+              layoutId="video-player"
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.8)] border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                onClick={() => setIsVideoOpen(false)}
-                className="absolute top-4 right-4 z-10 p-2.5 bg-black/60 hover:bg-black/90 hover:scale-110 rounded-full text-white transition-all backdrop-blur-md"
+                onClick={closeFullscreen}
+                className="absolute top-4 right-4 z-30 p-2.5 bg-black/60 hover:bg-black/90 hover:scale-110 rounded-full text-white transition-all backdrop-blur-md border border-white/10"
               >
                 <X className="w-6 h-6" />
               </button>
               <iframe
                 src="https://player.vimeo.com/video/1198058883?autoplay=1"
-                className="w-full h-full border-0"
+                className="w-full h-full border-0 z-20 absolute inset-0"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
               />

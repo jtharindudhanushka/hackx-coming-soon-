@@ -48,17 +48,9 @@ export function TimelineSection() {
 
   return (
     <section className="relative w-full py-16 md:py-24 px-4 md:px-8 overflow-hidden bg-[#010E13]" ref={containerRef}>
-      {/* Calendar Icon Watermark Background */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        <Image
-          src="/calendar_icon_bg.png"
-          alt=""
-          width={800}
-          height={800}
-          className="opacity-[0.04] select-none"
-          aria-hidden="true"
-        />
-      </div>
+      {/* Ambient Radial Glows */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-bioluminance/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-current-cta/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div

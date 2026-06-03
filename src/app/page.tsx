@@ -103,7 +103,7 @@ export default function Home() {
       )}
 
       {showMainContent && (
-        <div className="animate-in fade-in duration-1000">
+        <div className="w-full">
           <Hero />
           <AboutSection />
           <EligibilitySection />

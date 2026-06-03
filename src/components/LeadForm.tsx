@@ -124,13 +124,13 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
         <AnimatePresence>
           {isDropdownOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: -5 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 mt-2 bg-[#01141B] border border-white/10 rounded-2xl overflow-hidden z-50 shadow-2xl"
+              className="absolute top-full left-0 right-0 mt-2 bg-[#0a0a0a] border border-bioluminance/30 rounded-xl overflow-hidden z-[100] shadow-[0_10px_40px_rgba(0,0,0,0.8)] shadow-bioluminance/10"
             >
-              <div className="py-2">
+              <div className="py-1">
                 {strings.roleOptions.map((opt) => (
                   <button
                     key={opt}
@@ -139,9 +139,12 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
                       setRole(opt);
                       setIsDropdownOpen(false);
                     }}
-                    className="w-full text-left px-5 py-3 hover:bg-white/5 text-gray-300 hover:text-white transition-colors font-body"
+                    className="w-full text-left px-5 py-3.5 hover:bg-white/5 text-gray-300 hover:text-white transition-colors font-body border-b border-white/5 last:border-0 flex items-center justify-between group"
                   >
-                    {opt}
+                    <span>{opt}</span>
+                    {role === opt && (
+                      <div className="w-2 h-2 rounded-full bg-bioluminance shadow-[0_0_8px_rgba(114,229,248,0.8)]" />
+                    )}
                   </button>
                 ))}
               </div>

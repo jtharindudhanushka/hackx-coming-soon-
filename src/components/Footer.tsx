@@ -130,9 +130,9 @@ export function Footer() {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="w-full bg-[#00080B] border-t border-white/5 py-6 px-4 md:px-8"
       >
-        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-gray-500 font-body">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-gray-500 font-body text-center md:text-left">
           <p>Organized by The Industrial Management Science Students&apos; Association</p>
-          <p>© 2026 hackXJr All rights reserved.</p>
+          <p className="md:text-right">© 2026 hackXJr All rights reserved.</p>
         </div>
       </motion.div>
     </footer>
