@@ -4,6 +4,9 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
+// Feature flag to control visibility of AI generated/placeholder timeline photos
+const SHOW_TIMELINE_IMAGES = false;
+
 export function TimelineSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -97,7 +100,7 @@ export function TimelineSection() {
                       {event.desc}
                     </p>
 
-                    {event.images.length > 0 && (
+                    {SHOW_TIMELINE_IMAGES && event.images.length > 0 && (
                       <div className="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
                         {event.images.map((src, imgIdx) => (
                           <div

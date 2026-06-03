@@ -11,6 +11,10 @@ import { StayUpdatedCTA } from "@/components/StayUpdatedCTA";
 import { Footer } from "@/components/Footer";
 import { LeadModal } from "@/components/LeadModal";
 import { useLanguage } from "@/context/LanguageContext";
+
+// Feature flag to control multi-language support (English, Sinhala, Tamil)
+const ENABLE_MULTILANGUAGE = false;
+
 export default function Home() {
   const { language, setLanguage } = useLanguage();
   const [showSplash, setShowSplash] = useState(true);
@@ -21,7 +25,11 @@ export default function Home() {
 
   useEffect(() => {
     if (!showSplash) {
-      if (language) {
+      if (!ENABLE_MULTILANGUAGE) {
+        setLanguage("en");
+        setShowMainContent(true);
+        setShowLangSelector(false);
+      } else if (language) {
         setShowMainContent(true);
       } else {
         setShowLangSelector(true);
@@ -55,7 +63,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#010E13] text-white overflow-x-hidden relative">
-      {showMainContent && (
+      {showMainContent && ENABLE_MULTILANGUAGE && (
         <div className="fixed top-6 right-6 md:top-8 md:right-8 z-[90] flex bg-white/[0.02] border border-white/10 rounded-full p-1 backdrop-blur-md shadow-2xl">
           {[
             { label: 'EN', id: 'en' },
