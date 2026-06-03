@@ -16,15 +16,15 @@ export function Footer() {
           
           {/* Left Side: Organizers */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:max-w-md pt-2">
-            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-4 lg:mb-6 font-light tracking-wide">
+            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-2 lg:mb-3 font-light tracking-wide">
               {strings.organizersText}
             </p>
-            <div className="relative w-[280px] h-14 md:w-[360px] md:h-16 lg:w-[420px] lg:h-20">
+            <div className="relative w-[320px] h-20 md:w-[420px] md:h-28 lg:w-[480px] lg:h-32 -ml-2 lg:-ml-4">
               <Image
                 src="/organizerslogo.webp"
                 alt="Organizers: IMSSA, Ministry of Science and Technology, NSF"
                 fill
-                className="object-contain object-center lg:object-left"
+                className="object-contain object-center lg:object-left-top"
               />
             </div>
           </div>
