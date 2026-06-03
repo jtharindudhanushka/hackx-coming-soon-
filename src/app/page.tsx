@@ -38,15 +38,24 @@ export default function Home() {
   }, [showSplash, language]);
 
   useEffect(() => {
-    // Auto-trigger modal 2 seconds after main content is shown, exactly once.
+    // Show popup immediately after intro finishes
     if (showMainContent && !hasTriggeredModal) {
       const timer = setTimeout(() => {
         setShowLeadModal(true);
         setHasTriggeredModal(true);
-      }, 2000);
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, [showMainContent, hasTriggeredModal]);
+
+  // Lock scroll when lead modal is open
+  useEffect(() => {
+    if (showLeadModal) {
+      document.body.style.overflow = 'hidden';
+    } else if (showMainContent && !showSplash && !showLangSelector) {
+      document.body.style.overflow = 'unset';
+    }
+  }, [showLeadModal, showMainContent, showSplash, showLangSelector]);
 
   const handleLangSelect = () => {
     setShowLangSelector(false);
@@ -101,13 +110,13 @@ export default function Home() {
           <TimelineSection />
           <StayUpdatedCTA />
           <Footer />
-
-          <LeadModal 
-            isOpen={showLeadModal} 
-            onClose={() => setShowLeadModal(false)} 
-          />
         </div>
       )}
+
+      <LeadModal 
+        isOpen={showLeadModal} 
+        onClose={() => setShowLeadModal(false)} 
+      />
     </main>
   );
 }

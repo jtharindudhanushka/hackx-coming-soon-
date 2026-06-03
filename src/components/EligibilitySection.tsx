@@ -18,7 +18,8 @@ export function EligibilitySection() {
   ];
 
   return (
-    <section className="relative w-full py-24 md:py-32 px-4 md:px-8 bg-[#010E13] overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 px-4 md:px-8 bg-[#010E13] overflow-hidden">
+
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[400px] bg-bioluminance/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -26,27 +27,33 @@ export function EligibilitySection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16 text-center flex flex-col items-center"
         >
           <h2 className="font-display text-3xl md:text-5xl text-white mb-4 tracking-wider uppercase drop-shadow-[0_0_15px_rgba(114,229,248,0.1)]">
             Ready to Step Up?
           </h2>
-          <p className="font-body text-gray-400 max-w-2xl text-center">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="font-body text-gray-400 max-w-2xl text-center"
+          >
             Review our eligibility criteria below before registrations open.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {criteria.map((item, index) => (
             <motion.div
               key={item.num}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
               className="group relative p-8 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/[0.05] flex flex-col hover:border-bioluminance/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(114,229,248,0.1)] backdrop-blur-sm overflow-hidden"
             >
               {/* Subtle inner hover glow */}

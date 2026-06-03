@@ -2,41 +2,57 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Hero() {
   const { strings } = useLanguage();
+  const { scrollY } = useScroll();
+
+  // Parallax effects as user scrolls down (gentle / slow)
+  const bgY = useTransform(scrollY, [0, 800], [0, 60]);
+  const contentY = useTransform(scrollY, [0, 800], [0, -25]);
+  const contentOpacity = useTransform(scrollY, [0, 600], [1, 0]);
 
   if (!strings) return null;
 
   return (
     <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden py-24">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Video Background with Parallax */}
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-110"
         >
           <source src="/Hero_Loop.mp4" type="video/mp4" />
         </video>
         {/* Dark Gradient Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#010E13]/80 via-[#010E13]/60 to-[#010E13] z-10" />
-      </div>
+        {/* Tall bottom fade for seamless blend into next section */}
+        <div className="absolute -bottom-1 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[#010E13] z-20" />
+      </motion.div>
 
-      {/* Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 text-center flex flex-col items-center">
+      {/* Content with scroll fade */}
+      <motion.div
+        className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-8 text-center flex flex-col items-center"
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center"
         >
-          {/* Logo instead of Text */}
-          <div className="relative w-40 h-16 md:w-56 md:h-24 mb-6">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="relative w-40 h-16 md:w-56 md:h-24 mb-6"
+          >
             <Image
               src="/hackxlogo.webp"
               alt="hackX Jr. 9.0"
@@ -44,20 +60,30 @@ export function Hero() {
               className="object-contain drop-shadow-[0_0_15px_rgba(114,229,248,0.3)]"
               priority
             />
-          </div>
+          </motion.div>
 
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white tracking-widest drop-shadow-2xl mb-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white tracking-widest drop-shadow-2xl mb-6"
+          >
             {strings.heroTitle}
-          </h1>
-          <p className="font-body font-light text-base md:text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed mb-2">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+            className="font-body font-light text-base md:text-xl lg:text-2xl text-gray-300 max-w-3xl leading-relaxed mb-2"
+          >
             {strings.heroSubtitle1}<br></br> {strings.heroSubtitle2}
-          </p>
+          </motion.p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
           className="flex flex-col items-center gap-0 mt-2"
         >
           <div className="relative h-32 w-[400px] md:h-40 md:w-[600px]">
@@ -72,7 +98,9 @@ export function Hero() {
             {strings.organizersText}
           </p>
         </motion.div>
-      </div>
+
+
+      </motion.div>
     </section>
   );
 }
