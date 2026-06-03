@@ -11,13 +11,13 @@ interface LeadFormProps {
 
 export function LeadForm({ onSuccess }: LeadFormProps) {
   const { strings, language } = useLanguage();
-  
+
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [phone, setPhone] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -42,8 +42,12 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
       setError("Please select a role.");
       return;
     }
-    if (!phone || !(phone.startsWith("0") || phone.startsWith("+94"))) {
-      setError("Please enter a valid WhatsApp number starting with +94 or 0.");
+    // 1. Remove all spaces, dashes, and parentheses to normalize the number
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
+    // 2. Validate against Sri Lankan mobile number format (starts with +947, 947, or 07, followed by 8 digits)
+    const slPhoneRegex = /^(?:\+94|94|0)7\d{8}$/;
+    if (!cleanPhone || !slPhoneRegex.test(cleanPhone)) {
+      setError("Please enter a valid Sri Lankan WhatsApp number (e.g., +94 77 123 4567 or 077 123 4567).");
       return;
     }
 
@@ -53,7 +57,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, role, phone, lang: language }),
+        body: JSON.stringify({ name, role, phone: cleanPhone, lang: language }),
       });
 
       const data = await res.json();
@@ -96,7 +100,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
           {error}
         </div>
       )}
-      
+
       <div>
         <input
           type="text"
