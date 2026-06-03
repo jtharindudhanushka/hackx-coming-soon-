@@ -77,9 +77,9 @@ export function AboutSection() {
               onClick={() => setIsVideoOpen(true)}
             >
               <iframe
-                src="https://www.youtube.com/embed/Pj1A2AWeB28?autoplay=1&mute=1&controls=0&loop=1&playlist=Pj1A2AWeB28"
+                src="https://player.vimeo.com/video/1198058883?autoplay=1&muted=1&background=1"
                 className="w-full h-full object-cover pointer-events-none"
-                allow="autoplay; encrypted-media"
+                allow="autoplay; fullscreen"
               />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-bioluminance flex items-center justify-center text-[#010E13] scale-90 group-hover:scale-105 transition-transform duration-500 shadow-[0_0_40px_rgba(114,229,248,0.4)]">
@@ -165,9 +165,9 @@ export function AboutSection() {
                 <X className="w-6 h-6" />
               </button>
               <iframe
-                src="https://www.youtube.com/embed/Pj1A2AWeB28?autoplay=1"
+                src="https://player.vimeo.com/video/1198058883?autoplay=1"
                 className="w-full h-full border-0"
-                allow="autoplay; fullscreen; encrypted-media"
+                allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
               />
             </motion.div>
