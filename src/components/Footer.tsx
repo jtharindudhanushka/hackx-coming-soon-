@@ -11,15 +11,20 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-[#010E13] relative z-10 flex flex-col">
-      <div className="w-full border-t border-white/5 py-16 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12 lg:gap-16">
+      <div className="w-full border-t border-white/5 py-10 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 lg:gap-16">
           
           {/* Left Side: Organizers */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1">
-            <h2 className="font-display text-3xl font-bold text-white mb-6 uppercase tracking-widest italic">
-              hackX <span className="text-[#00E5FF]">Jr 2026</span>
-            </h2>
-            <p className="font-body text-base lg:text-lg text-gray-300 leading-relaxed mb-8 max-w-lg font-light tracking-wide">
+            <div className="relative w-48 h-16 md:w-56 md:h-20 mb-6">
+              <Image
+                src="/hackxlogo.webp"
+                alt="hackX Jr 2026 Logo"
+                fill
+                className="object-contain object-center lg:object-left"
+              />
+            </div>
+            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-6 max-w-lg font-light tracking-wide">
               {strings.organizersText}
             </p>
             <div className="relative w-[380px] h-28 md:w-[480px] md:h-36">
