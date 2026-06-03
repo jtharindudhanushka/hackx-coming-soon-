@@ -34,10 +34,10 @@ export function AboutSection() {
       <div className="max-w-6xl mx-auto flex flex-col gap-12 lg:gap-16">
 
         {/* Top Part: Text & Video */}
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center lg:items-stretch">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
 
           {/* Left Side: Content */}
-          <div className="flex-1 flex flex-col gap-12 justify-center">
+          <div className="flex-[1.2] flex flex-col gap-10 justify-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export function AboutSection() {
               transition={{ duration: 0.8 }}
               className="text-center lg:text-left"
             >
-              <h2 className="font-display text-3xl md:text-5xl text-white mb-6 tracking-wider">
+              <h2 className="font-display text-3xl md:text-5xl text-white mb-6 tracking-wider uppercase">
                 {strings.aboutTitle}
               </h2>
               <p className="font-body text-lg text-gray-400 leading-relaxed">
@@ -58,8 +58,10 @@ export function AboutSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="border-t-2 lg:border-t-0 lg:border-l-2 border-bioluminance pt-4 lg:pt-0 lg:pl-8 py-2 text-center lg:text-left"
+              className="border-t-2 lg:border-t-0 lg:border-l-4 border-bioluminance pt-6 lg:pt-0 lg:pl-8 py-2 text-center lg:text-left relative"
             >
+              {/* Subtle glow behind the quote line */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-bioluminance blur-[8px] opacity-50 hidden lg:block" />
               <h3 className="font-display text-2xl md:text-3xl text-gray-200 italic tracking-wide">
                 {strings.aboutQuote}
               </h3>
@@ -67,23 +69,33 @@ export function AboutSection() {
           </div>
 
           {/* Right Side: Video */}
-          <div className="flex-1 w-full flex flex-col justify-center mt-8 lg:mt-0">
+          <div className="flex-1 w-full flex flex-col justify-center mt-8 lg:mt-0 relative group">
+            {/* Ambient glow behind the video */}
+            <div className="absolute -inset-4 bg-bioluminance/20 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="w-full relative aspect-video rounded-2xl overflow-hidden border border-white/10 group cursor-pointer shadow-xl flex-grow"
+              className="w-full relative aspect-video rounded-3xl overflow-hidden border border-white/10 cursor-pointer shadow-[0_0_40px_rgba(0,0,0,0.8)] transform group-hover:scale-[1.02] transition-transform duration-500 bg-black"
               onClick={() => setIsVideoOpen(true)}
             >
+              {/* Glass reflection highlight on the top edge */}
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent z-20" />
+              
               <iframe
                 src="https://player.vimeo.com/video/1198058883?autoplay=1&muted=1&background=1"
-                className="w-full h-full object-cover pointer-events-none"
+                className="absolute inset-0 w-full h-full pointer-events-none z-0"
                 allow="autoplay; fullscreen"
               />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500 flex items-center justify-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-bioluminance flex items-center justify-center text-[#010E13] scale-90 group-hover:scale-105 transition-transform duration-500 shadow-[0_0_40px_rgba(114,229,248,0.4)]">
-                  <Play className="w-8 h-8 md:w-10 md:h-10 ml-1 md:ml-2 fill-current" />
+              
+              <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-black/10 to-black/60 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center">
+                  <div className="absolute inset-0 bg-bioluminance/30 rounded-full blur-md group-hover:bg-bioluminance/50 transition-colors duration-500 animate-pulse" />
+                  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-bioluminance/90 backdrop-blur-md border border-white/20 flex items-center justify-center text-[#010E13] scale-90 group-hover:scale-105 transition-transform duration-500 shadow-[0_0_30px_rgba(114,229,248,0.5)]">
+                    <Play className="w-8 h-8 md:w-10 md:h-10 ml-1 md:ml-2 fill-current" />
+                  </div>
                 </div>
               </div>
             </motion.div>
