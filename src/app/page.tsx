@@ -1,65 +1,105 @@
-import Image from "next/image";
+"use client";
 
+import React, { useState, useEffect } from "react";
+import { SplashScreen } from "@/components/SplashScreen";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { Hero } from "@/components/Hero";
+import { AboutSection } from "@/components/AboutSection";
+import { EligibilitySection } from "@/components/EligibilitySection";
+import { TimelineSection } from "@/components/TimelineSection";
+import { StayUpdatedCTA } from "@/components/StayUpdatedCTA";
+import { Footer } from "@/components/Footer";
+import { LeadModal } from "@/components/LeadModal";
+import { useLanguage } from "@/context/LanguageContext";
 export default function Home() {
+  const { language, setLanguage } = useLanguage();
+  const [showSplash, setShowSplash] = useState(true);
+  const [showLangSelector, setShowLangSelector] = useState(false);
+  const [showMainContent, setShowMainContent] = useState(false);
+  const [showLeadModal, setShowLeadModal] = useState(false);
+  const [hasTriggeredModal, setHasTriggeredModal] = useState(false);
+
+  useEffect(() => {
+    if (!showSplash) {
+      if (language) {
+        setShowMainContent(true);
+      } else {
+        setShowLangSelector(true);
+      }
+    }
+  }, [showSplash, language]);
+
+  useEffect(() => {
+    // Auto-trigger modal 2 seconds after main content is shown, exactly once.
+    if (showMainContent && !hasTriggeredModal) {
+      const timer = setTimeout(() => {
+        setShowLeadModal(true);
+        setHasTriggeredModal(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showMainContent, hasTriggeredModal]);
+
+  const handleLangSelect = () => {
+    setShowLangSelector(false);
+    setShowMainContent(true);
+  };
+
+  useEffect(() => {
+    if (showSplash || showLangSelector) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [showSplash, showLangSelector]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="min-h-screen bg-[#010E13] text-white overflow-x-hidden relative">
+      {showMainContent && (
+        <div className="fixed top-6 right-6 md:top-8 md:right-8 z-[90] flex bg-white/[0.02] border border-white/10 rounded-full p-1 backdrop-blur-md shadow-2xl">
+          {[
+            { label: 'EN', id: 'en' },
+            { label: 'සිංහල', id: 'si' },
+            { label: 'தமிழ்', id: 'ta' }
+          ].map((lang) => (
+            <button
+              key={lang.id}
+              onClick={() => setLanguage(lang.id as any)}
+              className={`px-4 py-1.5 rounded-full text-xs font-body font-medium transition-all duration-300 ${
+                language === lang.id 
+                  ? 'bg-lagoon text-white shadow-lg' 
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+              }`}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              {lang.label}
+            </button>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      )}
+
+      {showSplash && (
+        <SplashScreen onComplete={() => setShowSplash(false)} />
+      )}
+
+      {showLangSelector && (
+        <LanguageSelector onSelect={handleLangSelect} />
+      )}
+
+      {showMainContent && (
+        <div className="animate-in fade-in duration-1000">
+          <Hero />
+          <AboutSection />
+          <EligibilitySection />
+          <TimelineSection />
+          <StayUpdatedCTA />
+          <Footer />
+
+          <LeadModal 
+            isOpen={showLeadModal} 
+            onClose={() => setShowLeadModal(false)} 
+          />
         </div>
-      </main>
-    </div>
+      )}
+    </main>
   );
 }
