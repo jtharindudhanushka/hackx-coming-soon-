@@ -23,7 +23,7 @@ export function Footer() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-center justify-center text-center w-full h-full"
           >
-            <div className="relative w-56 h-20 md:w-64 md:h-24 lg:w-[280px] lg:h-[100px] mb-8 mx-auto">
+            <div className="relative w-56 h-20 md:w-64 md:h-24 lg:w-[280px] lg:h-[100px] mb-8 md:mb-10 mx-auto">
               <Image
                 src="/hackxlogo.webp"
                 alt="hackX Jr 2026 Logo"
@@ -31,11 +31,8 @@ export function Footer() {
                 className="object-contain object-center"
               />
             </div>
-            <p className="font-body text-[15px] md:text-base text-gray-300 leading-relaxed mb-8 font-light tracking-wide w-full mx-auto text-center">
-              Inter-School hackathon for school students<br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>across Sri Lanka.<br />
-              A flagship event organized by the Department of<br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>Industrial Management, University of Kelaniya.
+            <p className="font-body text-[15px] md:text-base text-gray-300 leading-relaxed mb-8 md:mb-10 font-light tracking-wide w-full max-w-[420px] mx-auto text-justify" style={{ textAlignLast: 'center' }}>
+              Inter-School hackathon for school students across Sri Lanka. A flagship event organized by the Department of Industrial Management, University of Kelaniya.
             </p>
             <div className="flex items-center justify-center gap-5 md:gap-6 w-full max-w-md mx-auto">
               <div className="h-10 md:h-14 w-[90px] md:w-[120px] overflow-hidden flex justify-start items-center">
@@ -119,9 +116,9 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-center lg:items-end justify-center w-full self-center"
           >
-            <img 
-              src="/ministry and nsf.png" 
-              alt="Ministry and NSF Logo" 
+            <img
+              src="/ministry and nsf.png"
+              alt="Ministry and NSF Logo"
               className="w-full max-w-[340px] md:max-w-[480px] lg:max-w-[550px] h-auto object-contain"
             />
           </motion.div>
