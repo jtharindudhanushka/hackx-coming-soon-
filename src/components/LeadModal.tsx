@@ -120,6 +120,42 @@ function ColonSep() {
   );
 }
 
+/* ── Multilingual rotating announcement ── */
+const ANNOUNCEMENT_TEXTS = [
+  "Join the notification list and be the first to know when registrations officially go live.",
+  "තරඟාවලිය සඳහා ලියාපදිංචි කිරීම ආරම්භ වූ සැණින් තොරතුරු ලබාගැනීමට පහත විස්තර පුරවන්න.",
+  "போட்டிக்கான பதிவுகள் ஆரம்பித்தவுடன் தகவல்களைப் பெற கீழே உள்ள உங்கள் விவரங்களைப் பதிவு செய்யுங்கள்.",
+];
+
+function MultilingualAnnouncement() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % ANNOUNCEMENT_TEXTS.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative w-full h-[5rem] sm:h-[4rem] overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={index}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className={`absolute inset-0 font-body ${index === 0 ? "text-sm sm:text-base" : "text-xs sm:text-sm"
+            } text-gray-400 leading-relaxed text-center flex items-center justify-center px-2`}
+        >
+          {ANNOUNCEMENT_TEXTS[index]}
+        </motion.p>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 /* ════════════════════════════════════════
    ██  LEAD MODAL  ██
    ════════════════════════════════════════ */
@@ -275,16 +311,15 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                 <TimerSegment value={time.seconds} label="Seconds" />
               </motion.div>
 
-              {/* Supporting text */}
-              <motion.p
+              {/* ── Multilingual rotating announcement ── */}
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="font-body text-xs sm:text-sm text-gray-400 max-w-md mb-6 sm:mb-8 leading-relaxed"
+                className="w-full max-w-md mb-6 sm:mb-8"
               >
-                Join the notification list and be the first to know when
-                registrations officially go live.
-              </motion.p>
+                <MultilingualAnnouncement />
+              </motion.div>
 
               {/* ── Form or Success ── */}
               <motion.div
@@ -343,8 +378,8 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                         type="button"
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                         className={`w-full flex items-center justify-between bg-white/[0.04] border ${isDropdownOpen
-                            ? "border-bioluminance/40"
-                            : "border-white/[0.08]"
+                          ? "border-bioluminance/40"
+                          : "border-white/[0.08]"
                           } rounded-xl px-4 py-3 sm:py-3.5 text-sm focus:outline-none transition-all duration-300 font-body ${role ? "text-white" : "text-gray-500"
                           }`}
                       >

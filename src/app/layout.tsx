@@ -43,6 +43,9 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "hackX Jr. 9.0 | Coming Soon",
   description: "Sri Lanka's premiere national inter-school innovation competition.",
+  icons: {
+    icon: "/hackxlogo.webp",
+  },
 };
 
 export default function RootLayout({

@@ -73,7 +73,7 @@ export function Footer() {
 
               <div className="flex justify-center lg:justify-between gap-4 w-full">
                 <a
-                  href="https://www.facebook.com/share/1Eq5BVbYQQ/?mibextid=wwXIfr"
+                  href="https://www.facebook.com/hackXJunior"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex justify-center p-3.5 rounded-full bg-white/[0.02] border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 text-gray-400 hover:text-white group backdrop-blur-sm hover:-translate-y-0.5"
@@ -81,7 +81,7 @@ export function Footer() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform duration-300"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
                 </a>
                 <a
-                  href="https://www.instagram.com/imssa.uok?igsh=MThpanZ5MnB6eXhpdA=="
+                  href="https://www.instagram.com/imssa.uok"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex justify-center p-3.5 rounded-full bg-white/[0.02] border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all duration-300 text-gray-400 hover:text-white group backdrop-blur-sm hover:-translate-y-0.5"

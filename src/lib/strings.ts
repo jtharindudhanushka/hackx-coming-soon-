@@ -6,24 +6,24 @@ export const STRINGS = {
     namePlaceholder: "Your name (optional)",
     rolePlaceholder: "I am a...",
     roleOptions: ["Student", "Teacher", "Principal", "Other"],
-    phonePlaceholder: "WhatsApp number (e.g. +94 77 123 4567)",
+    phonePlaceholder: "WhatsApp number (e.g. 07...)",
     submitBtn: "Notify Me",
     successTitle: "You're in!",
     successBody: "We'll WhatsApp you the moment registrations open.",
     cardTitle: "Stay Updated",
     cardBody: "Enter your WhatsApp number below to get notified the moment registrations go live.",
-    
+
     heroTitle: "COMING SOON",
     heroSubtitle1: "Sri Lanka's premiere national inter-school innovation competition.",
     heroSubtitle2: "Empowering students to turn everyday ideas into real-world solutions.",
-    
+
     aboutTitle: "Where Ideas Become Reality",
     aboutDesc: "Your idea could solve an everyday problem, become a product or service people would use, or even grow into a business. It could be a device that tells farmers the perfect time to harvest their crops, a smart streetlight that turns on only when someone is nearby, a tool that helps detect when a cow is unwell, or a simple app that improves life in your community. No idea is too small to make a difference, and you do not need coding or business experience to get started, just an idea worth building.",
     aboutQuote: "\"No idea is too small to make a difference.\"",
-    
+
     freedomTitle: "Endless Freedom",
     freedomDesc: "Build mobile apps, craft hardware prototypes, integrate AI tools, or pitch comprehensive business plans. We emphasize limitless innovation. Your creativity is the only boundary.",
-    
+
     guidanceTitle: "National Guidance",
     guidanceDesc: "Direct support from government.",
     mentorshipTitle: "Elite Mentorship",
@@ -48,7 +48,7 @@ export const STRINGS = {
     namePlaceholder: "ඔබේ නම (අත්‍යවශ්‍ය නොවේ)",
     rolePlaceholder: "මම...",
     roleOptions: ["ශිෂ්‍යයෙක්", "ගුරුවරයෙක්", "විදුහල්පතිවරයෙක්", "වෙනත්"],
-    phonePlaceholder: "WhatsApp අංකය (උදා: +94 77 ...)",
+    phonePlaceholder: "WhatsApp අංකය (උදා: 077 ...)",
     submitBtn: "මට දැනුම් දෙන්න",
     successTitle: "සාර්ථකයි!",
     successBody: "ලියාපදිංචිය ආරම්භ වූ වහාම අපි ඔබට WhatsApp පණිවිඩයක් මගින් දැනුම් දෙන්නෙමු.",
@@ -58,14 +58,14 @@ export const STRINGS = {
     heroTitle: "COMING SOON",
     heroSubtitle1: "ශ්‍රී ලංකාවේ ප්‍රමුඛතම ජාතික අන්තර් පාසල් නව නිපැයුම් තරඟාවලිය.",
     heroSubtitle2: "එදිනෙදා අදහස් සැබෑ ලෝකයේ විසඳුම් බවට පත් කිරීමට සිසුන් සවිබල ගැන්වීම.",
-    
+
     aboutTitle: "අදහස් යථාර්ථයක් බවට පත්වන තැන",
     aboutDesc: "ඔබේ අදහස එදිනෙදා ගැටලුවක් විසඳිය හැකිය, මිනිසුන් භාවිතා කරන නිෂ්පාදනයක් හෝ සේවාවක් බවට පත්විය හැකිය, නැතහොත් ව්‍යාපාරයක් දක්වා වර්ධනය විය හැකිය. එය ගොවීන්ට අස්වැන්න නෙළීමට සුදුසුම කාලය පවසන උපකරණයක්, කෙනෙකු අසල සිටින විට පමණක් දැල්වෙන ස්මාර්ට් වීදි ලාම්පුවක්, එළදෙනකු අසනීප වූ විට හඳුනාගන්නා මෙවලමක් හෝ ඔබේ ප්‍රජාවේ ජීවිතය පහසු කරන සරල යෙදුමක් විය හැකිය. කිසිදු අදහසක් වෙනසක් කිරීමට තරම් කුඩා නොවන අතර, ඔබට ආරම්භ කිරීමට ක්‍රමලේඛන (coding) හෝ ව්‍යාපාරික පළපුරුද්දක් අවශ්‍ය නොවේ, අවශ්‍ය වන්නේ ගොඩනැගීමට වටිනා අදහසක් පමණි.",
     aboutQuote: "\"කිසිදු අදහසක් වෙනසක් කිරීමට තරම් කුඩා නොවේ.\"",
-    
+
     freedomTitle: "නිමක් නැති නිදහස (Endless Freedom)",
     freedomDesc: "ජංගම යෙදුම් (mobile apps) තැනීම, දෘඩාංග ආකෘති (hardware prototypes) නිර්මාණය කිරීම, AI මෙවලම් ඒකාබද්ධ කිරීම, හෝ පුළුල් ව්‍යාපාරික සැලසුම් ඉදිරිපත් කිරීම. අපි සීමාවන් රහිත නවෝත්පාදනය අගය කරමු. ඔබේ නිර්මාණශීලිත්වය පමණක් සීමාව වේ.",
-    
+
     guidanceTitle: "ජාතික මගපෙන්වීම",
     guidanceDesc: "රජයෙන් ඍජු සහාය.",
     mentorshipTitle: "ප්‍රවීණ උපදේශනය",
@@ -90,7 +90,7 @@ export const STRINGS = {
     namePlaceholder: "உங்கள் பெயர் (விரும்பினால்)",
     rolePlaceholder: "நான் ஒரு...",
     roleOptions: ["மாணவன் / மாணவி", "ஆசிரியர்", "அதிபர்", "வேறு"],
-    phonePlaceholder: "WhatsApp எண் (உதா: +94 77 ...)",
+    phonePlaceholder: "WhatsApp எண் (உதா: 077 ...)",
     submitBtn: "எனக்கு அறிவிக்கவும்",
     successTitle: "வெற்றிகரமாக பதிவு செய்யப்பட்டது!",
     successBody: "பதிவுகள் தொடங்கியவுடன் உங்களுக்கு WhatsApp மூலம் அறிவிப்போம்.",
@@ -100,14 +100,14 @@ export const STRINGS = {
     heroTitle: "COMING SOON",
     heroSubtitle1: "இலங்கையின் முதன்மையான தேசிய பாடசாலைகளுக்கிடையிலான புத்தாக்கப் போட்டி.",
     heroSubtitle2: "அன்றாட யோசனைகளை நிஜ உலக தீர்வுகளாக மாற்ற மாணவர்களை வலுப்படுத்துதல்.",
-    
+
     aboutTitle: "யோசனைகள் நனவாகும் இடம்",
     aboutDesc: "உங்கள் யோசனை அன்றாடப் பிரச்சினையைத் தீர்க்கலாம், மக்கள் பயன்படுத்தும் ஒரு பொருளாகவோ அல்லது சேவையாகவோ மாறலாம் அல்லது ஒரு வணிகமாகக்கூட வளரலாம். இது விவசாயிகளுக்கு பயிர்களை அறுவடை செய்ய சரியான நேரத்தைக் கூறும் கருவியாகவோ, யாராவது அருகில் இருக்கும்போது மட்டும் ஒளிரும் ஸ்மார்ட் தெரு விளக்காகவோ, பசுவுக்கு உடல்நலமில்லை என்பதைக் கண்டறியும் கருவியாகவோ அல்லது உங்கள் சமூகத்தின் வாழ்க்கையை மேம்படுத்தும் எளிய செயலியாகவோ இருக்கலாம். எந்தவொரு யோசனையும் மாற்றத்தை ஏற்படுத்த முடியாத அளவுக்குச் சிறியதல்ல, ஆரம்பிக்க உங்களுக்கு கோடிங் அல்லது வணிக அனுபவம் தேவையில்லை, உருவாக்கத் தகுதியான ஒரு யோசனை மட்டுமே போதுமானது.",
     aboutQuote: "\"எந்தவொரு யோசனையும் மாற்றத்தை ஏற்படுத்த முடியாத அளவுக்குச் சிறியதல்ல.\"",
-    
+
     freedomTitle: "முடிவற்ற சுதந்திரம் (Endless Freedom)",
     freedomDesc: "மொபைல் செயலிகளை உருவாக்குங்கள், வன்பொருள் முன்மாதிரிகளை (hardware prototypes) வடிவமைக்கவும், AI கருவிகளை ஒருங்கிணைக்கவும் அல்லது விரிவான வணிகத் திட்டங்களை முன்வைக்கவும். எல்லையற்ற புத்தாக்கத்தை நாங்கள் வலியுறுத்துகிறோம். உங்கள் படைப்பாற்றல் மட்டுமே எல்லை.",
-    
+
     guidanceTitle: "தேசிய வழிகாட்டுதல்",
     guidanceDesc: "அரசாங்கத்திடமிருந்து நேரடி ஆதரவு.",
     mentorshipTitle: "சிறந்த வழிகாட்டுதல்",
