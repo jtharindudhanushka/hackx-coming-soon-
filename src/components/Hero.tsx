@@ -101,6 +101,27 @@ export function Hero() {
 
 
       </motion.div>
+
+      {/* Scroll Down Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-30"
+      >
+        <motion.button
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          animate={{ y: [0, 12, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="text-white/50 hover:text-white transition-colors p-2 focus:outline-none"
+          aria-label="Scroll down"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </motion.button>
+      </motion.div>
+
     </section>
   );
 }

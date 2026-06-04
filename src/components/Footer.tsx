@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-[#010E13] relative z-10 flex flex-col">
       <div className="w-full py-8 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 items-center lg:items-stretch">
+        <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-20 xl:gap-32 items-center lg:items-stretch px-4 lg:px-8">
 
           {/* Left Side: Organizers */}
           <motion.div
@@ -21,30 +21,9 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center lg:items-start justify-end text-center lg:text-left w-full h-full"
+            className="flex flex-col items-center justify-center text-center w-full h-full"
           >
-            <p className="font-body text-sm md:text-[15px] text-gray-300 leading-relaxed mb-2 font-light tracking-wide max-w-md">
-              {strings.organizersText}
-            </p>
-            <div className="relative w-[320px] h-24 md:w-[420px] md:h-32 lg:w-[520px] lg:h-[160px] -ml-2 lg:-ml-4">
-              <Image
-                src="/organizerslogo.webp"
-                alt="Organizers: IMSSA, Ministry of Science and Technology, NSF"
-                fill
-                className="object-contain object-center lg:object-left-bottom"
-              />
-            </div>
-          </motion.div>
-
-          {/* Center: hackX Logo */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center justify-center w-full lg:px-6 self-center"
-          >
-            <div className="relative w-64 h-24 md:w-80 md:h-28 lg:w-[340px] lg:h-[120px]">
+            <div className="relative w-56 h-20 md:w-64 md:h-24 lg:w-[280px] lg:h-[100px] mb-8 mx-auto">
               <Image
                 src="/hackxlogo.webp"
                 alt="hackX Jr 2026 Logo"
@@ -52,15 +31,28 @@ export function Footer() {
                 className="object-contain object-center"
               />
             </div>
+            <p className="font-body text-[15px] md:text-base text-gray-300 leading-relaxed mb-8 font-light tracking-wide w-full mx-auto text-center">
+              Inter-School hackathon for school students<br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>across Sri Lanka.<br />
+              A flagship event organized by the Department of<br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>Industrial Management, University of Kelaniya.
+            </p>
+            <div className="flex items-center justify-center gap-5 md:gap-6 w-full max-w-md mx-auto">
+              <div className="h-10 md:h-14 w-[90px] md:w-[120px] overflow-hidden flex justify-start items-center">
+                <img src="/mit.png" alt="MIT" className="h-full w-auto max-w-none object-left" />
+              </div>
+              <img src="/IMSSA.png" alt="IMSSA" className="h-10 md:h-14 w-auto object-contain" />
+              <img src="/uok.png" alt="University of Kelaniya" className="h-10 md:h-14 w-auto object-contain" />
+            </div>
           </motion.div>
 
-          {/* Right Side: Connect */}
+          {/* Center: Connect */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center lg:items-end w-full relative z-10 pt-2"
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center w-full relative z-10 self-center"
           >
             <div className="flex flex-col items-center w-full max-w-[320px]">
               <h3 className="font-display text-xl lg:text-2xl text-white tracking-widest mb-6 uppercase bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 text-center w-full">
@@ -117,6 +109,21 @@ export function Footer() {
                 </a>
               </div>
             </div>
+          </motion.div>
+
+          {/* Right Side: Ministry and NSF */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center lg:items-end justify-center w-full self-center"
+          >
+            <img 
+              src="/ministry and nsf.png" 
+              alt="Ministry and NSF Logo" 
+              className="w-full max-w-[340px] md:max-w-[480px] lg:max-w-[550px] h-auto object-contain"
+            />
           </motion.div>
 
         </div>
