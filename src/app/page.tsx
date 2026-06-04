@@ -38,12 +38,12 @@ export default function Home() {
   }, [showSplash, language]);
 
   useEffect(() => {
-    // Show popup immediately after intro finishes
+    // Show popup after intro finishes with a 2-second delay
     if (showMainContent && !hasTriggeredModal) {
       const timer = setTimeout(() => {
         setShowLeadModal(true);
         setHasTriggeredModal(true);
-      }, 500);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [showMainContent, hasTriggeredModal]);
