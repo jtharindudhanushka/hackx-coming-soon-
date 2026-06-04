@@ -6,7 +6,7 @@ export const STRINGS = {
     namePlaceholder: "Your name (optional)",
     rolePlaceholder: "I am a...",
     roleOptions: ["Student", "Teacher", "Principal", "Other"],
-    phonePlaceholder: "WhatsApp number (e.g. +94 77 ...)",
+    phonePlaceholder: "WhatsApp number (e.g. +94 77 123 4567)",
     submitBtn: "Notify Me",
     successTitle: "You're in!",
     successBody: "We'll WhatsApp you the moment registrations open.",
