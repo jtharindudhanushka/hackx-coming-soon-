@@ -138,7 +138,7 @@ function MultilingualAnnouncement() {
   }, []);
 
   return (
-    <div className="relative w-full h-[5rem] sm:h-[4rem] overflow-hidden">
+    <div className="relative w-full h-[4rem] sm:h-[3.5rem] overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.p
           key={index}
@@ -316,7 +316,7 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="w-full max-w-md mb-6 sm:mb-8"
+                className="w-full max-w-[95%] sm:max-w-lg mb-6 sm:mb-8"
               >
                 <MultilingualAnnouncement />
               </motion.div>
