@@ -86,15 +86,19 @@ export function Hero() {
           transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
           className="flex flex-col items-center gap-0 mt-2"
         >
-          <div className="relative h-32 w-[400px] md:h-40 md:w-[600px]">
-            <Image
-              src="/organizerslogo.webp"
-              alt="Organizers: IMSSA, Ministry of Science and Technology, NSF"
-              fill
-              className="object-contain"
+          <div className="flex items-center justify-center gap-1 md:gap-0.25 w-full max-w-[800px] py-4 mx-auto">
+            <img
+              src="/IMSSA.png"
+              alt="IMSSA"
+              className="h-16 md:h-24 lg:h-28 w-auto object-contain drop-shadow-lg"
+            />
+            <img
+              src="/Ministry of Science & Technology.png"
+              alt="Ministry of Science and Technology"
+              className="h-28 md:h-36 lg:h-44 w-auto object-contain drop-shadow-lg"
             />
           </div>
-          <p className="font-body text-xs md:text-sm text-gray-400 max-w-2xl -mt-6 md:-mt-8 opacity-80 leading-relaxed px-4">
+          <p className="font-body text-xs md:text-sm text-gray-400 max-w-2xl mt-2 opacity-80 leading-relaxed px-4">
             {strings.organizersText}
           </p>
         </motion.div>
@@ -107,17 +111,18 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-30"
+        className="absolute bottom-10 md:bottom-6 lg:bottom-4 left-1/2 -translate-x-1/2 z-30"
       >
         <motion.button
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
           animate={{ y: [0, 12, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="text-white/50 hover:text-white transition-colors p-2 focus:outline-none"
+          className="text-white/50 hover:text-white transition-colors p-2 focus:outline-none flex flex-col items-center gap-1"
           aria-label="Scroll down"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m6 9 6 6 6-6"/>
+          <span className="font-body text-[10px] md:text-xs tracking-[0.2em] uppercase opacity-70">Scroll Down</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m6 9 6 6 6-6" />
           </svg>
         </motion.button>
       </motion.div>

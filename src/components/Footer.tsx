@@ -31,15 +31,15 @@ export function Footer() {
                 className="object-contain object-center"
               />
             </div>
-            <p className="font-body text-[15px] md:text-base text-gray-300 leading-relaxed mb-8 md:mb-10 font-light tracking-wide w-full max-w-[420px] mx-auto text-justify" style={{ textAlignLast: 'center' }}>
+            <p className="font-body text-[15px] md:text-base text-gray-300 leading-relaxed mb-8 md:mb-10 font-light tracking-wide w-full max-w-[420px] mx-auto text-center md:text-justify" style={{ textAlignLast: 'center' }}>
               Inter-School hackathon for school students across Sri Lanka. A flagship event organized by the Department of Industrial Management, University of Kelaniya.
             </p>
             <div className="flex items-center justify-center gap-5 md:gap-6 w-full max-w-md mx-auto">
-              <div className="h-10 md:h-14 w-[90px] md:w-[120px] overflow-hidden flex justify-start items-center">
+              <div className="h-12 md:h-14 w-[110px] md:w-[120px] overflow-hidden flex justify-start items-center">
                 <img src="/mit.png" alt="MIT" className="h-full w-auto max-w-none object-left" />
               </div>
-              <img src="/IMSSA.png" alt="IMSSA" className="h-10 md:h-14 w-auto object-contain" />
-              <img src="/uok.png" alt="University of Kelaniya" className="h-10 md:h-14 w-auto object-contain" />
+              <img src="/IMSSA.png" alt="IMSSA" className="h-12 md:h-14 w-auto object-contain" />
+              <img src="/uok.png" alt="University of Kelaniya" className="h-12 md:h-14 w-auto object-contain" />
             </div>
           </motion.div>
 
@@ -114,12 +114,12 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center lg:items-end justify-center w-full self-center"
+            className="flex items-center justify-center w-full"
           >
             <img
-              src="/ministry and nsf.png"
-              alt="Ministry and NSF Logo"
-              className="w-full max-w-[340px] md:max-w-[480px] lg:max-w-[550px] h-auto object-contain"
+              src="/Ministry of Science & Technology.png"
+              alt="Ministry of Science and Technology"
+              className="h-24 md:h-32 lg:h-40 w-auto object-contain"
             />
           </motion.div>
 
