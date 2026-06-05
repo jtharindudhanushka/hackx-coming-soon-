@@ -18,7 +18,7 @@ export const STRINGS = {
     heroSubtitle2: "Empowering students to turn everyday ideas into real-world solutions.",
 
     aboutTitle: "Where Ideas Become Reality",
-    aboutDesc: "Your idea could solve an everyday problem, become a product or service people would use, or even grow into a business. It could be a device that tells farmers the perfect time to harvest their crops, a smart streetlight that turns on only when someone is nearby, a tool that helps detect when a cow is unwell, or a simple app that improves life in your community. No idea is too small to make a difference, and you do not need coding or business experience to get started, just an idea worth building.",
+    aboutDesc: "Your idea could solve an everyday problem, become a product or service people would use, or even grow into a business. It could be a device that tells farmers the perfect time to harvest their crops, a smart streetlight that turns on only when someone is nearby, a tool that helps detect when a cow is unwell, or a simple app that improves life in your community. Whether you choose to present a physical mockup, a detailed business plan, or a prototype, what matters most is your unique creativity and problem-solving skills.",
     aboutQuote: "\"No idea is too small to make a difference.\"",
 
     freedomTitle: "Endless Freedom",
@@ -27,18 +27,16 @@ export const STRINGS = {
     guidanceTitle: "National Guidance",
     guidanceDesc: "Direct support from government.",
     mentorshipTitle: "Elite Mentorship",
-    mentorshipDesc: "Coaching from industry leaders.",
-    fundingTitle: "Funding Ecosystem",
-    fundingDesc: "Introductions to top investors.",
+    mentorshipDesc: "Exclusive coaching from industry leaders for teams advancing from the semi-finals onwards.",
 
     gradeLevelTitle: "Grade Level",
     gradeLevelDesc: "Grade 8 to Advanced Level (2026 batch).",
     squadSizeTitle: "Squad Size",
-    squadSizeDesc: "1 to 5 students per team.",
+    squadSizeDesc: "Participants may join individually or as teams of 1–5 members. Both solo and group entries are welcome.",
     schoolRepTitle: "School Representation",
     schoolRepDesc: "All members must be from the same school.",
     beginnersTitle: "Open to Beginners",
-    beginnersDesc: "No programming or business experience is required to participate.",
+    beginnersDesc: "The competition welcomes beginners and is open to all levels, with no restriction to specific categories or expertise.",
     organizersText: "Organized by the Industrial Management Science Students' Association (IMSSA) of the Department of Industrial Management, University of Kelaniya, in partnership with the Ministry of Science and Technology and the National Science Foundation.",
   },
   si: {
@@ -70,8 +68,6 @@ export const STRINGS = {
     guidanceDesc: "රජයෙන් ඍජු සහාය.",
     mentorshipTitle: "ප්‍රවීණ උපදේශනය",
     mentorshipDesc: "ක්ෂේත්‍රයේ ප්‍රමුඛයින්ගෙන් පුහුණුව.",
-    fundingTitle: "මූල්‍ය පරිසර පද්ධතිය",
-    fundingDesc: "ප්‍රමුඛතම ආයෝජකයින්ට හඳුන්වා දීම.",
 
     gradeLevelTitle: "ශ්‍රේණි මට්ටම",
     gradeLevelDesc: "8 ශ්‍රේණියේ සිට උසස් පෙළ දක්වා (2026 කණ්ඩායම).",
@@ -112,8 +108,6 @@ export const STRINGS = {
     guidanceDesc: "அரசாங்கத்திடமிருந்து நேரடி ஆதரவு.",
     mentorshipTitle: "சிறந்த வழிகாட்டுதல்",
     mentorshipDesc: "துறை சார்ந்த வல்லுநர்களிடம் இருந்து பயிற்சி.",
-    fundingTitle: "நிதியுதவி சூழல்",
-    fundingDesc: "முன்னணி முதலீட்டாளர்களுக்கான அறிமுகம்.",
 
     gradeLevelTitle: "தரம்",
     gradeLevelDesc: "தரம் 8 முதல் உயர்தரம் வரை (2026 தொகுதி).",

@@ -11,11 +11,7 @@ export function RewardsSection() {
     },
     {
       title: "Elite Mentorship",
-      desc: "One-on-one coaching from industry leaders.",
-    },
-    {
-      title: "Funding Ecosystem",
-      desc: "Introductions to investors and funding avenues.",
+      desc: "Exclusive coaching from industry leaders for teams advancing from the semi-finals onwards.",
     },
   ];
 

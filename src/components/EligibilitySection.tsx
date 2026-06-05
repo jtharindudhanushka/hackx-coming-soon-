@@ -62,7 +62,7 @@ export function EligibilitySection() {
               {/* Top accent line on hover */}
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-bioluminance to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col items-center text-center">
                 <div className="font-mono text-3xl font-bold text-gray-600 group-hover:text-bioluminance transition-colors duration-300 mb-6">
                   {item.num}
                 </div>

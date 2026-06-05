@@ -65,11 +65,6 @@ export function AboutSection() {
       desc: strings.mentorshipDesc,
       icon: Users,
     },
-    {
-      title: strings.fundingTitle,
-      desc: strings.fundingDesc,
-      icon: TrendingUp,
-    },
   ];
 
   return (
